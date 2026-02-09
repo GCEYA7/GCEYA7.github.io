@@ -15,60 +15,48 @@ const yesBtn = document.querySelector(".btn-yes");
 const noBtn = document.querySelector(".btn-no");
 const img = document.querySelector(".img");
 
-const MAX_IMAGES = 5;
-let play = true;
 let noCount = 0;
-let noButtonSize = 1;
-let yesButtonSize = 1;
+let yesScale = 1;
+let noScale = 1;
 
 yesBtn.addEventListener("click", () => {
-  title.innerHTML = "Yay! I Love You!! 💗";
+  title.innerHTML = "Yay!! I love you 💗🥰";
   btnContainer.classList.add("hidden");
-  changeImage("yes");
+  img.src =
+    "https://media.tenor.com/ACi1vdjNbpIAAAAi/%EC%9C%A0%ED%83%80-%ED%86%A4%ED%86%A4%ED%94%84%EB%A0%8C%EC%A6%88.gif";
 });
 
 noBtn.addEventListener("click", () => {
-  if (play) {
-    noCount++;
-    const imageIndex = Math.min(noCount, MAX_IMAGES);
-    changeImage(imageIndex);
-    resizeYesButton();
-    shrinkNoButton();
-    updateNoButtonText();
-    if (noCount === MAX_IMAGES) play = false;
-  }
+  noCount++;
+
+  updateTitle(noCount);
+  resizeButtons();
+  updateImage(noCount);
 });
 
-function resizeYesButton() {
-  yesButtonSize *= 1.2;
-  yesBtn.style.transform = `scale(${yesButtonSize})`;
+function resizeButtons() {
+  yesScale *= 1.2;
+  noScale *= 0.9;
+
+  yesBtn.style.transform = `scale(${yesScale})`;
+  noBtn.style.transform = `scale(${noScale})`;
 }
 
-function shrinkNoButton() {
-  noButtonSize *= 0.90;
-  noBtn.style.transform = `scale(${noButtonSize})`;
-}
-
-function generateMessage(noCount) {
+function updateTitle(count) {
   const messages = [
-    "No 😔",
+    "Will you be my valentine? 🥺",
     "Are you sure? 🥺",
     "Mommy please 🥹",
-    "Don't do this to me 😭",
-    "You're breaking my heart 💔",
-    "I'm gonna cry... 😭💔",
+    "Don’t do this to me 😭",
+    "You’re breaking my heart 💔",
+    "I’m gonna cry… 😭💔",
   ];
-  return messages[Math.min(noCount, messages.length - 1)];
+
+  title.innerHTML = messages[Math.min(count, messages.length - 1)];
 }
 
-function changeImage(image) {
-  img.src =
-    image === "yes"
-      ? "https://media.tenor.com/ACi1vdjNbpIAAAAi/%EC%9C%A0%ED%83%80-%ED%86%A4%ED%86%A4%ED%94%84%EB%A0%8C%EC%A6%88.gif"
-      : tontonGifs[image];
+function updateImage(count) {
+  const index = Math.min(count, tontonGifs.length - 1);
+  img.src = tontonGifs[index];
 }
 
-function updateNoButtonText() {
-  noBtn.innerHTML = generateMessage(noCount);
-
-}
