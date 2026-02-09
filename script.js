@@ -53,7 +53,7 @@ function generateMessage(noCount) {
   const messages = [
     "No 😔",
     "Are you sure? 🥺",
-    "Pookie please 🥹",
+    "Mommy please 🥹",
     "Don't do this to me 😭",
     "You're breaking my heart 💔",
     "I'm gonna cry... 😭💔",
@@ -70,4 +70,5 @@ function changeImage(image) {
 
 function updateNoButtonText() {
   noBtn.innerHTML = generateMessage(noCount);
+
 }
