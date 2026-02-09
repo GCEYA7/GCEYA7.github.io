@@ -32,6 +32,14 @@ noBtn.addEventListener("click", () => {
   updateTitle(noCount);
   resizeButtons();
   updateImage(noCount);
+
+  // keep NO text fixed
+  noBtn.textContent = "No";
+
+  // after "You're breaking my heart"
+  if (noCount >= 5) {
+    noBtn.style.display = "none";
+  }
 });
 
 function resizeButtons() {
@@ -49,7 +57,7 @@ function updateTitle(count) {
     "Mommy please 🥹",
     "Don’t do this to me 😭",
     "You’re breaking my heart 💔",
-    "I’m gonna cry… 😭💔",
+    "There is no other way 😝😂",
   ];
 
   title.innerHTML = messages[Math.min(count, messages.length - 1)];
