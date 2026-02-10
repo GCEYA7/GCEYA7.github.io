@@ -68,3 +68,29 @@ function updateImage(count) {
   img.src = tontonGifs[index];
 }
 
+// ---- Watermark ----
+const watermark = document.createElement("div");
+watermark.innerHTML = `Designed by: <span class="akha-sign">Akha Gceya</span>`;
+document.body.appendChild(watermark);
+
+const style = document.createElement("style");
+style.innerHTML = `
+  @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+  div:last-child {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
+    pointer-events: none;
+  }
+
+  .akha-sign {
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+  }
+`;
+document.head.appendChild(style);
+
